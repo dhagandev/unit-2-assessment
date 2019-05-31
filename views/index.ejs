@@ -7,18 +7,18 @@
   <body>
     <h1>To Do List</h1>
 
-    <% if (Todos.length === 0) { %>
+    <% if (Todo.length === 0) { %>
     	<h3>There are no To Dos yet!</h3>
-    <% } else { console.log(Todos)%>
+    <% } else { %>
     	<ul>
-	    	<% Todos.forEach( todo => { %>
+	    	<% Todo.forEach( (todo, idx) => { %>
 	    		<li>
-	    			<%=todo.todo %> - 
-	    			<% if(todo.done) { %>
-	    				Done
-	    			<% } else { %>
-	    				Not Done
-	    			<% } %>
+	    			<%= todo.todo %> -
+	    			<%= todo.done ? 'Done' : 'Not Done' %>
+	    			
+	    			<form action="/<%= idx %>?_method=DELETE" id="delete-form" method="POST">
+						<button type="submit">Delete</button>
+					</form>
 	    				
 	    		</li>
 	    	<% }) %>
