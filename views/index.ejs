@@ -12,14 +12,18 @@
     <% } else { %>
     	<ul>
 	    	<% Todo.forEach( (todo, idx) => { %>
-	    		<li>
+				<li>
 	    			<%= todo.todo %> -
 	    			<%= todo.done ? 'Done' : 'Not Done' %>
 	    			
+	    			<% if(!todo.done) { %>
+		    			<form action="/<%= idx %>?_method=Put" id="put-form" method="POST">
+							<button type="submit">Complete</button>
+						</form>
+					<% } %>
 	    			<form action="/<%= idx %>?_method=DELETE" id="delete-form" method="POST">
 						<button type="submit">Delete</button>
 					</form>
-	    				
 	    		</li>
 	    	<% }) %>
 	    </ul>

@@ -4,7 +4,6 @@ module.exports = {
 	index,
 	create,
 	complete,
-	update,
 	delete: deleteTodo
 }
 
@@ -19,13 +18,8 @@ function create(req, res, next) {
 }
 
 function complete(req, res, next) {
-	console.log(req.body)
-	console.log(req.params.id)
-	res.render('index', {Todo})
-}
-
-function update(req, res, next) {
-
+	Todo[req.params.idx].done = true;
+	res.redirect("/");
 }
 
 function deleteTodo(req, res, next) {
